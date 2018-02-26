@@ -1,0 +1,42 @@
+buildscript {
+	ext {
+		springBootVersion = '1.5.3.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'org.springframework.boot'
+
+jar {
+	baseName = 'sell'
+	version = '1.0.0'
+}
+
+repositories {
+	mavenLocal()
+	maven {
+		url 'http://maven.aliyun.com/nexus/content/groups/public/'
+	}
+}
+
+sourceCompatibility = 1.8
+
+dependencies {
+	compile('org.springframework.boot:spring-boot-starter-web')
+	compile('mysql:mysql-connector-java:6.0.5')
+	compile('org.springframework.boot:spring-boot-starter-data-jpa')
+	compile('org.projectlombok:lombok:1.16.18')
+	compile('com.google.code.gson:gson:2.6.2')
+	compile('com.github.binarywang:weixin-java-mp:2.7.0')
+	compile('cn.springboot:best-pay-sdk:1.1.0')
+	compile('org.springframework.boot:spring-boot-starter-freemarker')
+	compile('org.springframework.boot:spring-boot-starter-data-redis')
+	compile('org.springframework.boot:spring-boot-starter-websocket')
+	testCompile('org.springframework.boot:spring-boot-starter-test')
+}
